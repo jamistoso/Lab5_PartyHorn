@@ -9,9 +9,14 @@ var honkBtn = document.getElementById("honk-btn");
 var radioChoice = document.getElementById("audio-selection");
 radioChoice.addEventListener("change", changeHorn);
 var radioIcon = document.getElementById("sound-image");
-
-honkBtn.addEventListener("click", honk);
+var form = document.getElementById("party-horn-form");
 var horn = document.getElementById("horn-sound");
+form.addEventListener("submit", function(event) {
+    event.preventDefault();
+    if(volume > 0) {
+        horn.play(); 
+    }
+});
 
 slider.oninput = function() {
     volNum.value = this.value;
@@ -40,7 +45,6 @@ function changeHorn() {
     }
 }
 
-
 function changeIcon() {
     if(volume > 66) {
         volImg.src = "./assets/media/icons/volume-level-3.svg"
@@ -53,9 +57,4 @@ function changeIcon() {
     }
 }
 
-function honk() {
-    if(volume > 0) {
-        horn.play(); 
-    }
-}
 // TODO
